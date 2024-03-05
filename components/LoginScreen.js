@@ -1,8 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Button } from 'react-native';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -28,6 +28,9 @@ const LoginScreen = () => {
             />
             <TouchableOpacity style={styles.button} onPress={handleLogin}>
                 <Text style={styles.buttonText}>Login</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.goToMainScreenButton} onPress={() => navigation.navigate('Main')}>
+                <Text style={styles.buttonText}>Go TO The Main Screen Directly</Text>
             </TouchableOpacity>
         </View>
     );
@@ -58,6 +61,13 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 20,
         borderRadius: 5,
+    },
+    goToMainScreenButton: {
+        backgroundColor: 'green',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        marginTop: 10,
     },
     buttonText: {
         color: 'white',
