@@ -1,14 +1,18 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { View, Button } from 'react-native';
 
-const getRandomText = () => {
-    const texts = ['Hello', 'World', 'React Native', 'GitHub Copilot'];
-    const randomIndex = Math.floor(Math.random() * texts.length);
-    return texts[randomIndex];
+const MainScreens = ({ navigation }) => {
+    return (
+        <>
+            <View>
+                <Button title="Go to Sales" onPress={() => navigation.navigate('Sales')} />
+                <Button title="Go to Payment" onPress={() => navigation.navigate('Payment')} />
+                <Button title="Go to Product" onPress={() => navigation.navigate('Product')} />
+                <Button title="Go to Settings" onPress={() => navigation.navigate('Settings')} />
+                <Button title="Go to Report" onPress={() => navigation.navigate('Report')} />
+            </View>
+        </>
+    );
 };
 
-const RandomText = () => {
-    return <Text>{getRandomText()}</Text>;
-};
-
-export default RandomText;
+export default MainScreens;
