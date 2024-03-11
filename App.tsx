@@ -1,9 +1,13 @@
 import React from 'react';
 import AppNavigator from './navigation/AppNavigatior';
+import { NativeBaseProvider } from "native-base";
+
 
 const App = () => {
   return (
-    <AppNavigator />
+    <NativeBaseProvider>
+      <AppNavigator />
+    </NativeBaseProvider>
   );
 };
 
