@@ -114,12 +114,17 @@ const Example = () => {
       />
 
       {/* Bottom Bars */}
-      <HStack space={2} p={1} borderTopWidth={1} borderColor="muted.800">
-        <Text>Total Price (Selected): ${totalPriceSelected.toFixed(2)}</Text>
-      </HStack>
-      <HStack space={2} p={1} borderTopWidth={1} borderColor="muted.800">
-        <Text>Total Price (All): ${totalPriceAll.toFixed(2)}</Text>
-      </HStack>
+      <VStack space={2} p={1} borderTopWidth={1} borderColor="muted.800">
+        <HStack space={2} p={1} bg="gray.200" borderTopWidth={1} borderColor="muted.800">
+          <Text>Total Price (Selected): ${totalPriceSelected.toFixed(2)}</Text>
+        </HStack>
+        <HStack space={2} p={1} bg="gray.300" borderTopWidth={1} borderColor="muted.800">
+          <Text>Total Price (All): ${totalPriceAll.toFixed(2)}</Text>
+        </HStack>
+        <Button onPress={() => navigation.navigate('Sales')} colorScheme="info">
+          Go to Sales
+        </Button>
+      </VStack>
 
       {/* Bottom Buttons */}
       <HStack space={2} p={1} borderTopWidth={1} borderColor="muted.800">
