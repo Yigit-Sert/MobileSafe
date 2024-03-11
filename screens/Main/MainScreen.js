@@ -1,17 +1,17 @@
 import React from 'react';
-import { View, Button } from 'react-native';
-
+import { Box, VStack, Button } from 'native-base';
 const MainScreens = ({ navigation }) => {
     return (
-        <>
-            <View>
-                <Button title="Go to Sales" onPress={() => navigation.navigate('Sales')} />
-                <Button title="Go to Payment" onPress={() => navigation.navigate('Payment')} />
-                <Button title="Go to Product" onPress={() => navigation.navigate('Product')} />
-                <Button title="Go to Settings" onPress={() => navigation.navigate('Settings')} />
-                <Button title="Go to Report" onPress={() => navigation.navigate('Report')} />
-            </View>
-        </>
+        <Box flex={1} bg="white">
+            <VStack p={5} space={5} justifyContent="space-between" borderTopWidth={1} borderColor="muted.800">
+                <Button colorScheme={'primary'} onPress={() => navigation.navigate('Sales')}>Sales</Button>
+                <Button colorScheme={'primary'} onPress={() => navigation.navigate('Payment')}>Payment</Button>
+                <Button colorScheme={'primary'} onPress={() => navigation.navigate('Product')}>Product</Button>
+                <Button colorScheme={'primary'} onPress={() => navigation.navigate('Settings')}>Settings</Button>
+                <Button colorScheme={'primary'} onPress={() => navigation.navigate('Report')}>Report</Button>
+
+            </VStack>
+        </Box>
     );
 };
 
