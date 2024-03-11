@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Box, FlatList, HStack, VStack, Text, Checkbox, Avatar, Spacer, Button, Center } from "native-base";
 
-const Example = (navigation) => {
+const Example = ({ navigation }) => {
   const data = [
     {
       id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -115,17 +115,17 @@ const Example = (navigation) => {
 
       {/* Bottom Bars */}
       <HStack space={2} p={1} borderTopWidth={1} borderColor="muted.800">
-          <VStack>
-            <HStack w={80} space={2} p={1} bg="gray.200" borderTopWidth={1} borderColor="muted.800">
-              <Text>Total Price (Selected): ${totalPriceSelected.toFixed(2)}</Text>
-            </HStack>
-            <HStack w={80} space={2} p={1} bg="gray.300" borderTopWidth={1} borderColor="muted.800">
-              <Text>Total Price (All): ${totalPriceAll.toFixed(2)}</Text>
-            </HStack>
-          </VStack>
-          <Button w={20} p={1} onPress={() => navigation.navigate('Payment')} colorScheme="info">
-            PAYMENT
-          </Button>
+        <VStack>
+          <HStack w={80} space={2} p={1} bg="gray.200" borderTopWidth={1} borderColor="muted.800">
+            <Text>Total Price (Selected): ${totalPriceSelected.toFixed(2)}</Text>
+          </HStack>
+          <HStack w={80} space={2} p={1} bg="gray.300" borderTopWidth={1} borderColor="muted.800">
+            <Text>Total Price (All): ${totalPriceAll.toFixed(2)}</Text>
+          </HStack>
+        </VStack>
+        <Button w={20} p={1} onPress={() => navigation.navigate('Payment')} colorScheme="info">
+          PAYMENT
+        </Button>
       </HStack>
 
       {/* Bottom Buttons */}
