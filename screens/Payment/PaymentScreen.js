@@ -1,86 +1,83 @@
-import React, { useState } from 'react';
-import { View, Text, Image, Button } from 'native-base';
+import React, { useState, useEffect } from "react";
+import { Box, Content, HStack, VStack, Text, Button, Container, Center, ListItem, Form, Item, Input, } from "native-base";
 
-const RandomProductViewer = ({ data }) => {
-  const [selectedProduct, setSelectedProduct] = useState(null);
+const Example = ({ navigation }) => {
 
-  const getRandomProduct = () => {
-    const randomIndex = Math.floor(Math.random() * data.length);
-    const product = data[randomIndex];
-    setSelectedProduct(product);
+
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [totalPriceSelected, setTotalPriceSelected] = useState(0);
+  const [totalPriceAll, setTotalPriceAll] = useState(0);
+
+  const handleCheckboxChange = (id, price) => {
+    const isSelected = selectedItems.includes(id);
+    /* 
+        if (isSelected) {
+          setSelectedItems(selectedItems.filter((itemId) => itemId !== id));
+        } else {
+          setSelectedItems([...selectedItems, id]);
+        }
+    
+        setTotalPriceSelected(isSelected ? totalPriceSelected - price : totalPriceSelected + price); */
   };
 
-  return (
-    <View p={4} alignItems='center'>
-      <Button onPress={getRandomProduct}>Show Random Product</Button>
 
-      {selectedProduct && (
-        <View mt={4}>
-          <Text>Name: {selectedProduct.name}</Text>
-          <Text>Price: {selectedProduct.price}</Text>
-          <Text>Quantity: {selectedProduct.quantity}</Text>
-          <Text>Tax: {selectedProduct.tax}</Text>
-          <Image
-            source={{ uri: selectedProduct.image }}
-            alt='Product Image'
-            size='xl'
-            mt={4}
-          />
-        </View>
-      )}
-    </View>
+
+  return (
+    <Box flex={1}>
+      <Box flex={1}>
+        <Center>
+          <Box p={4} w="full" m={2} bg="white" shadow={2} borderRadius={10}>
+            {/* Content */}
+            <HStack justifyContent="space-between">
+              <VStack>
+                <Text fontSize="lg" fontWeight="bold">Document ID: </Text>
+              </VStack>
+              <VStack>
+                <Text>Date: </Text>
+                <Text>Time: </Text>
+              </VStack>
+            </HStack>
+            <HStack mt={4} justifyContent="space-between">
+              <Text>Product Amount: </Text>
+              <Text fontSize="lg" fontWeight="bold">Total Payment: </Text>
+            </HStack>
+          </Box>
+        </Center>
+
+        {/* Bottom Bars */}
+        <VStack flex={1} justifyContent="flex-end">
+          <HStack space={2} p={1} borderTopWidth={1} borderColor="muted.800">
+            <VStack>
+              <HStack w={80} space={2} p={1} bg="gray.200" borderTopWidth={1} borderColor="muted.800">
+                <Text>Total Price (Selected): ${totalPriceSelected.toFixed(2)}</Text>
+              </HStack>
+              <HStack w={80} space={2} p={1} bg="gray.300" borderTopWidth={1} borderColor="muted.800">
+                <Text>Total Price (All): ${totalPriceAll.toFixed(2)}</Text>
+              </HStack>
+            </VStack>
+            <Button w={20} p={1} onPress={() => alert(`Card button pressed`)} colorScheme="info">
+              FINISH DOCUMENT
+            </Button>
+          </HStack>
+        </VStack>
+
+        {/* Bottom Buttons */}
+        <HStack space={2} p={1} borderTopWidth={1} borderColor="muted.800">
+          <Button flex={1} colorScheme="primary" onPress={() => alert(`Card button pressed`)}>
+            Card
+          </Button>
+          <Button flex={1} colorScheme="secondary" onPress={() => alert(`Cash button pressed`)}>
+            Cash
+          </Button>
+        </HStack>
+        <HStack p={1}>
+          <Button flex={1} colorScheme="info" onPress={() => alert(`Show More button pressed`)}>
+            Show More
+          </Button>
+        </HStack>
+      </Box>
+    </Box>
   );
 };
 
-const App = () => {
-    const data = [
-        {
-          id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-          name: "Product 1",
-          price: "10.00 TL",
-          quantity: 1,
-          tax: 0.18, // 18% VAT
-          image: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-        },
-        {
-          id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-          name: "Product 2",
-          price: "15.00 TL",
-          quantity: 2,
-          tax: 0.08, // 8% VAT
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyEaZqT3fHeNrPGcnjLLX1v_W4mvBlgpwxnA&usqp=CAU",
-        },
-        {
-          id: "58694a0f-3da1-471f-bd96-145571e29d72",
-          name: "Product 3",
-          price: "20.00 TL",
-          quantity: 1,
-          tax: 0.15, // 15% VAT
-          image: "https://miro.medium.com/max/1400/0*0fClPmIScV5pTLoE.jpg",
-        },
-        {
-          id: "68694a0f-3da1-431f-bd56-142371e29d72",
-          name: "Product 4",
-          price: "25.00 TL",
-          quantity: 3,
-          tax: 0.12, // 12% VAT
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr01zI37DYuR8bMV5exWQBSw28C1v_71CAh8d7GP1mplcmTgQA6Q66Oo--QedAN1B4E1k&usqp=CAU",
-        },
-        {
-          id: "28694a0f-3da1-471f-bd96-142456e29d72",
-          name: "Product 5",
-          price: "12.47 TL",
-          quantity: 2,
-          tax: 0.10, // 10% VAT
-          image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBwgu1A5zgPSvfE83nurkuzNEoXs9DMNr8Ww&usqp=CAU",
-        },
-      ];
-
-  return (
-    <View flex={1} justifyContent='center' alignItems='center'>
-      <RandomProductViewer data={data} />
-    </View>
-  );
-};
-
-export default App;
+export default Example;
