@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, Alert } from 'native-base';
 import QRCodeScanner from 'react-native-qrcode-scanner';
 import { RNCamera } from 'react-native-camera';
 
 
-const HelloWorld = () => {
-    cons [qrCode, setQrCode] = useState('');
+const App = () => {
+    const [qrCode, Setdata] = useState('');
 
     return (
         <QRCodeScanner
@@ -28,4 +28,4 @@ const HelloWorld = () => {
     );
 };
 
-export default HelloWorld;
+export default App;
