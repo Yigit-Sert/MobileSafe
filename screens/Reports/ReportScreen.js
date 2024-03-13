@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, VStack, HStack, Button } from "native-base";
 
-const Example = () => {
+const ReportScreen = () => {
     return (
       <Box flex={1}>
           <VStack p={5} space={5} justifyContent="space-between" borderTopWidth={1} borderColor="muted.800">
@@ -17,4 +17,4 @@ const Example = () => {
   
   
 
-export default Example;
+export default ReportScreen;

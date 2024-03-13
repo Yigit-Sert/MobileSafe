@@ -8,6 +8,7 @@ import PaymentScreen from '../screens/Payment/PaymentScreen';
 import ProductsScreen from '../screens/Products/ProductsScreen';
 import SettingsScreen from '../screens/Settings/SettingsScreen';
 import ReportScreen from '../screens/Reports/ReportScreen';
+import QRCodeScanner from '../screens/CommonComponents/QRCodeScanner';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Product" component={ProductsScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Report" component={ReportScreen} />
+        <Stack.Screen name="QRCodeScanner" component={QRCodeScanner} />
       </Stack.Navigator>
     </NavigationContainer>
   );

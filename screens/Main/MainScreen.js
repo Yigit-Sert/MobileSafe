@@ -9,7 +9,7 @@ const MainScreens = ({ navigation }) => {
                 <Button colorScheme={'primary'} onPress={() => navigation.navigate('Product')}>Product</Button>
                 <Button colorScheme={'primary'} onPress={() => navigation.navigate('Settings')}>Settings</Button>
                 <Button colorScheme={'primary'} onPress={() => navigation.navigate('Report')}>Report</Button>
-
+                <Button colorScheme={'warning'} onPress={() => navigation.navigate('QRCodeScanner')}>QRCodeScanner</Button>
             </VStack>
         </Box>
     );
