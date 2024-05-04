@@ -3,11 +3,9 @@ import {useState} from 'react';
 import {
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   StyleSheet,
-  Button,
-  SafeAreaView,
+  ScrollView,
 } from 'react-native';
 import CustomInput from '../CommonComponents/CustomInput';
 import CustomButton from '../CommonComponents/CustomButton';
@@ -16,33 +14,60 @@ const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const onLoginPressed = () => {
+    console.warn('Login Pressed');
+  };
+
+  const onForgotPasswordPressed = () => {
+    console.warn('onForgotPasswordPressed Pressed');
+  };
+
+  const onLoginWithGoogle = () => {
+    console.warn('onLoginWithGoogle Pressed');
+  };
+
   return (
-    <View style={styles.root}>
-      <Text style={styles.title}>Login Screen</Text>
-      <CustomInput
-        placeholder="Username"
-        value={username}
-        setValue={setUsername}
-      />
-      <CustomInput
-        placeholder="Password"
-        value={password}
-        setValue={setPassword}
-        secureTextEntry
-      />
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.root}>
+        <Text style={styles.title}>Login Screen</Text>
+        <CustomInput
+          placeholder="Username"
+          value={username}
+          setValue={setUsername}
+        />
+        <CustomInput
+          placeholder="Password"
+          value={password}
+          setValue={setPassword}
+          secureTextEntry
+        />
 
-      <CustomButton />
+        <CustomButton text="Login" onPress={onLoginPressed} />
 
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
+        <CustomButton
+          text="Forgot Password?"
+          onPress={onForgotPasswordPressed}
+          type="TERTIARY"
+        />
 
-      <TouchableOpacity
-        style={styles.goToMainScreenButton}
-        onPress={() => navigation.navigate('Main')}>
-        <Text style={styles.buttonText}>Go TO The Main Screen Directly</Text>
-      </TouchableOpacity>
-    </View>
+        <CustomButton
+          text="Login with Google"
+          onPress={onLoginWithGoogle}
+          bgColor="#fae9ea"
+          fgColor="#dd4d44"
+        />
+
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          style={styles.goToMainScreenButton}
+          onPress={() => navigation.navigate('Main')}>
+          <Text style={styles.buttonText}>Go TO The Main Screen Directly</Text>
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 };
 
@@ -56,20 +81,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
   },
-  input: {
-    width: '80%',
-    height: 40,
-    borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 5,
-    marginBottom: 10,
-    paddingHorizontal: 10,
-  },
   button: {
     backgroundColor: 'blue',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
+    marginTop: 10,
   },
   goToMainScreenButton: {
     backgroundColor: 'green',
