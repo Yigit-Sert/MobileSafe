@@ -9,44 +9,30 @@ import {
   Button,
   SafeAreaView,
 } from 'react-native';
-import CustomInput from './CustomInput';
+import CustomInput from '../CommonComponents/CustomInput';
 
 const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Add your login logic here
-  };
-
   return (
-    <View style={styles.container}>
+    <View style={styles.root}>
       <Text style={styles.title}>Login Screen</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        value={email}
-        onChangeText={setEmail}
+      <CustomInput
+        placeholder="Username"
+        value={username}
+        setValue={setUsername}
       />
-      <TextInput
-        style={styles.input}
+      <CustomInput
         placeholder="Password"
-        secureTextEntry
         value={password}
-        onChangeText={setPassword}
+        setValue={setPassword}
+        secureTextEntry
       />
-      <SafeAreaView>
-        <CustomInput
-          placeholder="Username"
-          value={username}
-          setValue={setUsername}
-        />
-      </SafeAreaView>
-      {/* <CustomInput placeholder="Password" value={password} setValue={setPassword} secureTextEntry/> */}
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
+      <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
+
       <TouchableOpacity
         style={styles.goToMainScreenButton}
         onPress={() => navigation.navigate('Main')}>
@@ -57,10 +43,9 @@ const LoginScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  root: {
     alignItems: 'center',
+    padding: 20,
   },
   title: {
     fontSize: 24,
