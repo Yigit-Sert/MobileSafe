@@ -10,6 +10,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import CustomInput from '../CommonComponents/CustomInput';
+import CustomButton from '../CommonComponents/CustomButton';
 
 const LoginScreen = ({navigation}) => {
   const [username, setUsername] = useState('');
@@ -29,6 +30,9 @@ const LoginScreen = ({navigation}) => {
         setValue={setPassword}
         secureTextEntry
       />
+
+      <CustomButton />
+
       <TouchableOpacity style={styles.button}>
         <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
